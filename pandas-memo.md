@@ -174,3 +174,48 @@ df_new.loc[df_new['age']>40, ['salary']] *= 1.2
 df.set_index('column', inplace = True/False)
 ```
 
+#### Принудительное преобразование типов 
+```py
+df['id_movie'] = df['id_movie'].astype('str') 
+```
+
+#### Работа с датами
+
+```py
+# Преобразование строки → datetime
+df['birthday'] = pd.to_datetime(df['birthday'], format='%d.%m.%Y')
+
+# Извлечение компонентов
+df['birthday'].dt.year   # месяц, день, hour, minute, second
+
+# Округление времени
+df['birthday'].dt.round('D')   # до дней
+df['birthday'].dt.floor('H')   # вниз до часов
+df['birthday'].dt.ceil('T')    # вверх до минут
+
+# Округление до месяца
+df['birthday'].dt.to_period('M').dt.to_timestamp()
+
+# Арифметика с датами (возраст в секундах)
+diff = pd.to_datetime('01.09.2023', format='%d.%m.%Y') - df['birthday']
+diff.dt.total_seconds()
+```
+
+#### Пропущенные значения
+
+```py
+# Подсчёт пропусков
+df['grade'].isna().sum()
+
+# Замена на среднее (без учёта NaN)
+mean_val = df['grade'].dropna().mean().round()
+df['grade'] = df['grade'].fillna(mean_val).astype('int')
+```
+#### Строковые методы
+```py
+df['gender'] = (df['gender']
+                .str.replace('М', 'Мужской', regex=False)
+                .str.replace('Ж', 'Женский', regex=False))
+
+# Доступны: .str.lower(), .str.upper(), .str.contains(), .str.strip() и др.
+```
