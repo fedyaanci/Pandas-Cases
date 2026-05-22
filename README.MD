@@ -35,4 +35,5 @@
    ```
 2. Запустите Jupyter Notebook
 3. Откройте файлы dataset-titanic.ipynb, [seminar]pandas.ipynb(черновик-тут подключал свое воображение), в /series/series.ipynb памятка по series
+
    
