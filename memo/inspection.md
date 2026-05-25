@@ -70,6 +70,7 @@ df['id'] = df['id'].astype(str)
 # строка - дата
 df['date'] = pd.to_datetime(df['date'], errors='coerce')
 
+Хоро
 ```
 
 ### Очистка строк
