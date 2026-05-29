@@ -110,9 +110,15 @@ df.loc[df['salary'] < 0, 'salary'] = 0   # отрицательная зп - 0
 # заменить через map (для категориальных)
 mapping = {'МСК': 1, 'СПБ': 2, 'КЗН': 3}
 df['city_code'] = df['city'].map(mapping)  # не найденные → nan
-```
 
-### Антипаттерн
+# можно для добавления новых колонок
+users.assign(new_column=[5,5,5,5], ind = [4,3,2,1])
+
+users[users['grade'].isin(grades)] # одна и та же запись
+users.query('grade.isin(@grades)') # однга и та же запись
+
+```
+### Антипаттерн 
 
 ```py
 for tup in df.itertuples():  
