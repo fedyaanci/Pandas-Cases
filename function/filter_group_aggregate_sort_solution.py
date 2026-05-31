@@ -1,2 +1,0 @@
-def filter_group_aggregate_sort_solution(df, column_to_filter, filter_set, column_to_group, column_to_aggregate):
-    return df.query(f'{column_to_filter}.isin(@filter_set)').groupby([column_to_group], as_index=False).agg({column_to_aggregate: 'sum'}).sort_values(column_to_aggregate,ascending=False)
